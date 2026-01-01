@@ -7,7 +7,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeButton = document.getElementById('close-button');
     const tooltip = document.getElementById('tooltip');
     const tabManager = new TabManager();
+
+    // Default to DuckDuckGo for the initial tab/search engine
+    if (!localStorage.getItem('searchEngine') || localStorage.getItem('searchEngine') === '') {
+        localStorage.setItem('searchEngine', 'duckduckgo');
+    }
+
+    // Create the initial tab and navigate to DuckDuckGo
     tabManager.createTab();
+    // Ensure the URL bar shows DuckDuckGo and the tab loads the site
+    if (urlBar) urlBar.value = 'https://duckduckgo.com/';
+    tabManager.navigateToUrl('https://duckduckgo.com/');
     const sidebarToggle = document.querySelector('.sidebar-toggle');
     const sidebar = document.querySelector('.tab-sidebar');
     const browserContainer = document.querySelector('.browser-container');
