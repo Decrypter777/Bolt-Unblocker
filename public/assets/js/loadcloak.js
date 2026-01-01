@@ -57,21 +57,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     switch (localStorage.getItem('cloak')) {
         case 'classroom':
-            changeFavicon("/assets/imgs/otherlogos/classroomfavicon.png");
+            changeFavicon("https://ginger.pythonanywhere.com/static/favicon.png");
             document.title = 'Home';
             break;
         case 'clever':
-            changeFavicon("/assets/imgs/otherlogos/clever.jpg");
+            changeFavicon("https://ginger.pythonanywhere.com/static/favicon.png");
             document.title = 'Clever | Portal';
             break;
         case 'desmos':
-            changeFavicon("/assets/imgs/otherlogos/desmos.png");
+            changeFavicon("https://ginger.pythonanywhere.com/static/favicon.png");
             document.title = 'Desmos | Graphing Calculator';
             break;
         case 'none':
         default:
-            changeFavicon("/assets/imgs/logos/boltlogo11.ico");
-            document.title = 'Bolt Unblocker';
+            changeFavicon("https://ginger.pythonanywhere.com/static/favicon.png");
+            document.title = 'Fluxi';
             break;
     }
 

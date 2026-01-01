@@ -6,7 +6,7 @@ var pinnedApps = JSON.parse(localStorage.getItem("pinnedApps")) || [];
 var pinned = document.getElementById("pinned-apps");
 const searchInput = document.getElementById("search-input");
 
-big.innerText = localStorage.getItem("name") || "User";
+big.innerText = "Welcome to Fluxi";
 if (!localStorage.getItem("searchEngine")) {
     localStorage.setItem("searchEngine", "duckduckgo");
 }
@@ -20,8 +20,6 @@ if (!window.location.href.includes("localhost:8080")) {
         a.id = "script";
         document.body.appendChild(a);
         const b = document.createElement("div");
-        b.classList.add("sz-link");
-        b.innerHTML = '<a href="https://sz.games" target="_blank">SZ Games</a><script src="https://partner.senty.com.au/partner-3b3f1808.js"></script>'
         document.body.appendChild(b);
     }
 }
@@ -65,21 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    if (!localStorage.getItem('appsTooltipShown')) {
-        const appsTooltip = document.createElement('div');
-        appsTooltip.id = 'apps-tooltip';
-        appsTooltip.textContent = 'Click here to open apps menu';
-        document.body.appendChild(appsTooltip);
 
-        setTimeout(() => {
-            appsTooltip.classList.add('visible');
-        }, 1000);
-
-        document.getElementById('flogo').addEventListener('click', () => {
-            appsTooltip.classList.remove('visible');
-            localStorage.setItem('appsTooltipShown', 'true');
-        });
-    }
 });
 
 function unpinApp(app) {

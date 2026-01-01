@@ -25,7 +25,6 @@ const boltPremium = document.getElementById('bolt-premium');
 const premiumActivate = document.getElementById('activate-premium');
 const searchEngineSelect = document.getElementById('search-engine');
 const performaceMode = document.getElementById('activate-upm');
-const adsDisable = document.getElementById('disable-ads');
 const addWallpaper = document.getElementById('add-wallpaper-btn');
 const addWallpaperURL = document.getElementById('add-wallpaper-url');
 const WEBHOOK_URL = 'https://discord.com/api/webhooks/1369096278142746665/xELduKuAgvubhRUj1Oah8QHCIEE2fr6WTAZtkRh4dKIY0kW8Zrsy3mqEn43kBKo-tohK';
@@ -270,19 +269,7 @@ performaceMode.addEventListener('click', () => {
     }
 });
 
-adsDisable.addEventListener('click', () => {
-    if (localStorage.getItem('a') === 'true') {
-        localStorage.setItem('a', 'false');
-        alert('Ads have been disabled. I guess you don`t want to support Bolt. Meanie.');
-        window.top.location.reload();
-    } else if (localStorage.getItem('a') === 'false') {
-        localStorage.setItem('a', 'true');
-        alert('Ads have been re-enabled. Thanks for supporting Bolt! 💖');
-        window.top.location.reload();
-    }
-    else {
-        localStorage.setItem('a', 'false');
-        alert('Ads have been disabled. I guess you don`t want to support Bolt. Meanie.');
-        window.top.location.reload();
-    }
-});
+// Ads removed: ensure ads are disabled by default
+if (localStorage.getItem('a') === null) {
+    localStorage.setItem('a', 'false');
+}

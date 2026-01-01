@@ -7,7 +7,9 @@ function attachClickHandler() {
 
     if (letsgoButton) {
         letsgoButton.addEventListener('click', function () {
-            iframe.src = '/srcdocs/name.html';
+            // Skip the name prompt and proceed with a default name
+            window.top.localStorage.setItem('name', 'Guest');
+            window.top.location.href = '/';
         });
     }
 }
