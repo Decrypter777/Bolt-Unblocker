@@ -14,10 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Create the initial tab and navigate to DuckDuckGo
-    tabManager.createTab();
-    // Ensure the URL bar shows DuckDuckGo and the tab loads the site
-    if (urlBar) urlBar.value = 'https://duckduckgo.com/';
-    tabManager.navigateToUrl('https://duckduckgo.com/');
+    const initialTab = tabManager.createTab();
+    // Ensure the browser app opens the initial tab at DuckDuckGo when visiting the browser app directly
+    const duckUrl = 'https://duckduckgo.com/';
+    if (urlBar) urlBar.value = duckUrl;
+    // Navigate the active tab to DuckDuckGo (do it next tick to ensure activation completed)
+    setTimeout(() => tabManager.navigateToUrl(duckUrl), 0);
     const sidebarToggle = document.querySelector('.sidebar-toggle');
     const sidebar = document.querySelector('.tab-sidebar');
     const browserContainer = document.querySelector('.browser-container');
