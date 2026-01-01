@@ -1,5 +1,10 @@
 class Tab {
-    constructor(url = 'https://' + (localStorage.getItem('searchEngine') || 'duckduckgo') + '.com/') {
+    constructor(url) {
+        // Default to configured search engine, fallback to DuckDuckGo
+        if (!url || url === '') {
+            const se = localStorage.getItem('searchEngine') || 'duckduckgo';
+            url = 'https://' + se + '.com/';
+        }
         this.id = Math.random().toString(36).substr(2, 9);
         this.originalUrl = url;
         if (localStorage.getItem("proxy") == "uv") {
@@ -118,7 +123,7 @@ class TabManager {
         this.draggedTab = null;
         this.draggedTabIndex = null;
 
-        document.querySelector('.new-tab-button').addEventListener('click', () => this.createTab());
+        document.querySelector('.new-tab-button').addEventListener('click', () => this.createTab('https://duckduckgo.com/'));
 
         // Initialize drag and drop functionality
         this.initDragAndDrop();
@@ -235,8 +240,8 @@ class TabManager {
         this.draggedTabIndex = null;
     }
 
-    createTab() {
-        const tab = new Tab();
+    createTab(initialUrl) {
+        const tab = new Tab(initialUrl);
         this.tabs.set(tab.id, tab);
         this.tabsContainer.appendChild(tab.element);
         this.iframeContainer.appendChild(tab.iframe);
